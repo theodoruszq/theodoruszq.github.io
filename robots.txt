@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://theodoruszq.github.io/sitemap.xml
