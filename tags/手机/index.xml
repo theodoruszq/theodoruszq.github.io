@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Digital Reality</title>
-    <link>https://theodoruszq.github.io/</link>
-    <description>Recent content on Digital Reality</description>
+    <title>手机 on Digital Reality</title>
+    <link>https://theodoruszq.github.io/tags/%E6%89%8B%E6%9C%BA/</link>
+    <description>Recent content in 手机 on Digital Reality</description>
     <generator>Hugo</generator>
     <language>zh-Hans</language>
     <copyright>© 2024 - 2025 Qiang | [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/)</copyright>
     <lastBuildDate>Fri, 06 Dec 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://theodoruszq.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://theodoruszq.github.io/tags/%E6%89%8B%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>换到 iPhone16 Pro 以后</title>
       <link>https://theodoruszq.github.io/posts/20241206-transfer_to_iphone16/</link>
       <pubDate>Fri, 06 Dec 2024 00:00:00 +0000</pubDate>
       <guid>https://theodoruszq.github.io/posts/20241206-transfer_to_iphone16/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title></title>
-      <link>https://theodoruszq.github.io/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://theodoruszq.github.io/about/</guid>
       <description></description>
     </item>
   </channel>
