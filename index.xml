@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>zh-Hans</language>
     <copyright>© 2024 - 2025 Qiang | [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/)</copyright>
-    <lastBuildDate>Fri, 06 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 26 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://theodoruszq.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 GPT4o 编写 NAS 上的图书管理软件</title>
+      <link>https://theodoruszq.github.io/posts/20250426-gpt4o_vibe_coding/</link>
+      <pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://theodoruszq.github.io/posts/20250426-gpt4o_vibe_coding/</guid>
+      <description></description>
+    </item>
     <item>
       <title>换到 iPhone16 Pro 以后</title>
       <link>https://theodoruszq.github.io/posts/20241206-transfer_to_iphone16/</link>
