@@ -116,7 +116,7 @@ def render_page(post, lang, template):
   <meta name="theme-color" content="#ffffff">
   <title {text_attrs(titles)}>{escape(titles[lang])}</title>
   <meta name="description" content="{summary}" data-content-zh="{escape(post['summary']['zh'], quote=True)}" data-content-en="{escape(post['summary']['en'], quote=True)}">
-  <meta name="author" content="Theodorus Zhou">
+  <meta name="author" content="Qiang Zhou">
   <link rel="canonical" href="{BASE + urls[lang]}" {href_attrs({key: BASE + value for key, value in urls.items()})}>
   <link rel="alternate" hreflang="zh-Hans" href="{BASE + urls['zh']}">
   <link rel="alternate" hreflang="en" href="{BASE + urls['en']}">
