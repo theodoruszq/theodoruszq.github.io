@@ -18,7 +18,7 @@
       blogDescription: '一些日常、想法和折腾的记录。',
       creationDescription: '为了自己用，也为了做出来的那一点开心。',
       hello: '他叫 Zhou Qiang，一名 AI 时代的观察者与试验者。他在ByteDance工作了几年，是一名算法工程师，参与过有趣的、无趣的、成功的、失败的几个或大或小的项目。',
-      interests: '最近，他在驱动一些视觉生成模型的微不足道的单点能力，也在探索 AI Agent 的可能性。',
+      interests: '最近，他在驱动一些视觉生成模型的单点能力，也在探索 AI Agent 的可能性。',
       writing: '他希望通过不断尝试和创作，在这个快速变化的时代，留下属于自己的几个脚印。',
       family: '哦，他还有一个幸福的小家，和一个可爱的好大儿。',
       portrait: 'Zhou Qiang 和儿子的像素风合影', personalProject: '个人项目',
