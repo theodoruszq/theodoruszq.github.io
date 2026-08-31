@@ -1,0 +1,14 @@
+{
+  "date": "2025-04-26",
+  "published": "2025-04-26",
+  "draft": false,
+  "title": {
+    "zh": "使用 GPT4o 编写 NAS 上的图书管理软件",
+    "en": "Building a NAS Book Manager with GPT4o"
+  },
+  "summary": {
+    "zh": "从一个整理藏书的念头开始，用 GPT4o 一步步搭起自己的图书管理软件，顺便记录踩过的坑。",
+    "en": "From wanting to organize my books to building a personal library manager with GPT4o, including the detours along the way."
+  },
+  "image": "/images/20250426-gpt4o_manager.jpg"
+}

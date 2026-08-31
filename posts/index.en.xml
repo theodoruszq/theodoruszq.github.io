@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Digital Reality</title>
+    <link>https://theodoruszq.github.io/</link>
+    <description>Blog posts</description>
+    <language>en</language>
+    <copyright>© 2024–2026 Qiang · CC BY-NC-ND 4.0</copyright>
+    <lastBuildDate>Sat, 06 Sep 2025 14:26:52 +0000</lastBuildDate>
+    <atom:link href="https://theodoruszq.github.io/posts/index.en.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Independent Digital Musician</title>
+      <link>https://theodoruszq.github.io/en/posts/20250906-independent-digital-musician/</link>
+      <pubDate>Sat, 06 Sep 2025 14:26:52 +0000</pubDate>
+      <guid>https://theodoruszq.github.io/en/posts/20250906-independent-digital-musician/</guid>
+      <description>From trying Suno to making and releasing Friday Ocean with ChatGPT and GarageBand: my first experience creating music.</description>
+    </item>
+    <item>
+      <title>Making Music Available Offline</title>
+      <link>https://theodoruszq.github.io/en/posts/20250824-making-music-available-offline/</link>
+      <pubDate>Sun, 24 Aug 2025 15:57:37 +0000</pubDate>
+      <guid>https://theodoruszq.github.io/en/posts/20250824-making-music-available-offline/</guid>
+      <description>Recording system audio on macOS with BlackHole and Audacity, building an offline music library, and reflecting on subscriptions and choice.</description>
+    </item>
+    <item>
+      <title>Building a NAS Book Manager with GPT4o</title>
+      <link>https://theodoruszq.github.io/en/posts/20250426-gpt4o_vibe_coding/</link>
+      <pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://theodoruszq.github.io/en/posts/20250426-gpt4o_vibe_coding/</guid>
+      <description>From wanting to organize my books to building a personal library manager with GPT4o, including the detours along the way.</description>
+    </item>
+    <item>
+      <title>After Switching to the iPhone 16 Pro</title>
+      <link>https://theodoruszq.github.io/en/posts/20241206-transfer_to_iphone16/</link>
+      <pubDate>Fri, 06 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://theodoruszq.github.io/en/posts/20241206-transfer_to_iphone16/</guid>
+      <description>From iPhone to Android and back again: thoughts on photography, tools, and living with a product every day.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,27 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
-    <title>文章 on Digital Reality</title>
-    <link>https://theodoruszq.github.io/posts/</link>
-    <description>Recent content in 文章 on Digital Reality</description>
-    <generator>Hugo</generator>
+    <title>Digital Reality</title>
+    <link>https://theodoruszq.github.io/</link>
+    <description>博客文章</description>
     <language>zh-Hans</language>
-    <copyright>© 2024 - 2025 Qiang | [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/)</copyright>
-    <lastBuildDate>Sat, 26 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <copyright>© 2024–2026 Qiang · CC BY-NC-ND 4.0</copyright>
+    <lastBuildDate>Sat, 06 Sep 2025 14:26:52 +0000</lastBuildDate>
     <atom:link href="https://theodoruszq.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>独立数字音乐作者 // Independent Digital Musician</title>
+      <link>https://theodoruszq.github.io/posts/20250906-independent-digital-musician/</link>
+      <pubDate>Sat, 06 Sep 2025 14:26:52 +0000</pubDate>
+      <guid>https://theodoruszq.github.io/posts/20250906-independent-digital-musician/</guid>
+      <description>从尝试 Suno，到用 ChatGPT 和 GarageBand 制作并发布《Friday Ocean》，记录第一次独立创作音乐的过程。</description>
+    </item>
+    <item>
+      <title>离线化音乐数据 // Making Music Available Offline</title>
+      <link>https://theodoruszq.github.io/posts/20250824-making-music-available-offline/</link>
+      <pubDate>Sun, 24 Aug 2025 15:57:37 +0000</pubDate>
+      <guid>https://theodoruszq.github.io/posts/20250824-making-music-available-offline/</guid>
+      <description>在 macOS 上用 BlackHole 和 Audacity 录制系统音频，整理自己的离线音乐库，也聊聊订阅制与选择权。</description>
+    </item>
     <item>
       <title>使用 GPT4o 编写 NAS 上的图书管理软件</title>
       <link>https://theodoruszq.github.io/posts/20250426-gpt4o_vibe_coding/</link>
       <pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
       <guid>https://theodoruszq.github.io/posts/20250426-gpt4o_vibe_coding/</guid>
-      <description></description>
+      <description>从一个整理藏书的念头开始，用 GPT4o 一步步搭起自己的图书管理软件，顺便记录踩过的坑。</description>
     </item>
     <item>
       <title>换到 iPhone16 Pro 以后</title>
       <link>https://theodoruszq.github.io/posts/20241206-transfer_to_iphone16/</link>
       <pubDate>Fri, 06 Dec 2024 00:00:00 +0000</pubDate>
       <guid>https://theodoruszq.github.io/posts/20241206-transfer_to_iphone16/</guid>
-      <description></description>
+      <description>从 iPhone 到 Android，再回到 iPhone。关于拍照、工具，以及每天与一件产品相处的感受。</description>
     </item>
   </channel>
 </rss>

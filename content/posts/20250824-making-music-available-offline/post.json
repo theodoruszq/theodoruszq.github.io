@@ -1,0 +1,15 @@
+{
+  "date": "2025-08-24",
+  "published": "2025-08-24T15:57:37+00:00",
+  "draft": false,
+  "title": {
+    "zh": "离线化音乐数据 // Making Music Available Offline",
+    "en": "Making Music Available Offline"
+  },
+  "summary": {
+    "zh": "在 macOS 上用 BlackHole 和 Audacity 录制系统音频，整理自己的离线音乐库，也聊聊订阅制与选择权。",
+    "en": "Recording system audio on macOS with BlackHole and Audacity, building an offline music library, and reflecting on subscriptions and choice."
+  },
+  "image": "/images/20250824-making-music-available-offline/offline-audio-flow.png",
+  "original": "https://theodoruszq.wordpress.com/2025/08/24/%e7%a6%bb%e7%ba%bf%e5%8c%96%e9%9f%b3%e4%b9%90%e6%95%b0%e6%8d%ae-making-music-available-offline/"
+}

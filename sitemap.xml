@@ -1,49 +1,36 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-    
-      <url>
-            <loc>https://theodoruszq.github.io/</loc>
-            <lastmod>2025-04-26T00:00:00+00:00</lastmod>
-          </url>
-    
-  
-    
-  
-    
-  
-    
-      <url>
-            <loc>https://theodoruszq.github.io/posts/20250426-gpt4o_vibe_coding/</loc>
-            <lastmod>2025-04-26T00:00:00+00:00</lastmod>
-          </url>
-    
-  
-    
-      <url>
-            <loc>https://theodoruszq.github.io/posts/</loc>
-            <lastmod>2025-04-26T00:00:00+00:00</lastmod>
-          </url>
-    
-  
-    
-      <url>
-            <loc>https://theodoruszq.github.io/posts/20241206-transfer_to_iphone16/</loc>
-            <lastmod>2024-12-06T00:00:00+00:00</lastmod>
-          </url>
-    
-  
-    
-  
-    
-      <url>
-            <loc>https://theodoruszq.github.io/about/</loc>
-          </url>
-    
-  
-    
-  
-    
-  
+<?xml version='1.0' encoding='utf-8'?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://theodoruszq.github.io/</loc>
+  </url>
+  <url>
+    <loc>https://theodoruszq.github.io/posts/</loc>
+  </url>
+  <url>
+    <loc>https://theodoruszq.github.io/creations/</loc>
+  </url>
+  <url>
+    <loc>https://theodoruszq.github.io/posts/20250906-independent-digital-musician/</loc>
+  </url>
+  <url>
+    <loc>https://theodoruszq.github.io/en/posts/20250906-independent-digital-musician/</loc>
+  </url>
+  <url>
+    <loc>https://theodoruszq.github.io/posts/20250824-making-music-available-offline/</loc>
+  </url>
+  <url>
+    <loc>https://theodoruszq.github.io/en/posts/20250824-making-music-available-offline/</loc>
+  </url>
+  <url>
+    <loc>https://theodoruszq.github.io/posts/20250426-gpt4o_vibe_coding/</loc>
+  </url>
+  <url>
+    <loc>https://theodoruszq.github.io/en/posts/20250426-gpt4o_vibe_coding/</loc>
+  </url>
+  <url>
+    <loc>https://theodoruszq.github.io/posts/20241206-transfer_to_iphone16/</loc>
+  </url>
+  <url>
+    <loc>https://theodoruszq.github.io/en/posts/20241206-transfer_to_iphone16/</loc>
+  </url>
 </urlset>
