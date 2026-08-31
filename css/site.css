@@ -66,16 +66,22 @@ main { min-width: 0; }
 .about {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 220px;
+  grid-template-areas:
+    "intro portrait"
+    "bio portrait"
+    "links links";
   align-items: center;
   gap: 38px;
   padding: 0 20px;
   margin-bottom: 50px;
   scroll-margin-top: 36px;
 }
+.intro { grid-area: intro; }
 .intro h1 { margin: 0 0 20px; text-align: center; }
-.intro p { line-height: 1.85; }
-.portrait { width: 220px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; }
-.contact-links { grid-column: 1 / -1; display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin: 19px 0 0; }
+.bio { grid-area: bio; }
+.bio p { line-height: 1.85; }
+.portrait { grid-area: portrait; width: 220px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; }
+.contact-links { grid-area: links; display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin: 19px 0 0; }
 .contact-links span { color: var(--muted); }
 .contact-links a { color: var(--subtle-link); text-decoration: underline; text-underline-offset: 3px; }
 .contact-links a:hover { color: var(--hover); }
@@ -147,7 +153,7 @@ main { min-width: 0; }
 .not-found { padding: 20px; }
 .not-found h1 { margin-bottom: 20px; }
 @media (min-width: 761px) {
-  html:lang(zh-Hans) .intro > p:not(.contact-links) { font-size: 13px; }
+  html:lang(zh-Hans) .bio > p { font-size: 13px; }
 }
 @media (max-width: 760px) {
   html { scroll-padding-top: 24px; }
@@ -171,17 +177,31 @@ main { min-width: 0; }
 }
 @media (max-width: 480px) {
   .post-body .image-gallery { grid-template-columns: minmax(0, 1fr); }
-  .about { grid-template-columns: minmax(0, 1fr); gap: 24px; margin-bottom: 34px; }
-  .portrait { grid-row: 1; width: 108px; }
-  .intro h1 { font-size: 28px; margin-bottom: 18px; }
-  .entry { grid-template-columns: minmax(0, 1fr); gap: 14px; }
-  .entry-image { width: 160px; }
-  .entry-image img { width: 160px; height: 100px; }
-  .entry-text-only .entry-copy { grid-column: 1; }
+  .about {
+    grid-template-columns: 108px minmax(0, 1fr);
+    grid-template-areas:
+      "portrait intro"
+      "bio bio"
+      "links links";
+    column-gap: 20px;
+    row-gap: 8px;
+    margin-bottom: 34px;
+  }
+  .portrait { grid-area: portrait; width: 108px; }
+  .intro { grid-area: intro; }
+  .intro h1 { text-align: left; margin: 0; font-size: 28px; }
+  .bio { grid-area: bio; }
+  .contact-links { grid-area: links; margin-top: 2px; gap: 4px 12px; }
+  .contact-links > span:first-child { flex-basis: 100%; text-align: center; }
+  .contact-links > span:nth-child(2) { display: none; }
+  .entry { grid-template-columns: 128px minmax(0, 1fr); gap: 14px; }
+  .entry-image { width: 128px; }
+  .entry-image img { width: 128px; height: 96px; }
+  .entry-text-only .entry-copy { grid-column: 2; }
   .entry-copy h3 { font-size: 15px; }
-  .blog-list .entry { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .blog-list .entry { grid-template-columns: 128px minmax(0, 1fr); gap: 12px; }
   .blog-list .entry-image { width: 128px; }
-  .blog-list .entry-image img { height: 80px; }
+  .blog-list .entry-image img { width: 128px; height: 88px; }
   .entry-heading { gap: 2px 12px; }
   .entry-heading h3 { flex-basis: 100%; }
   .entry-heading .entry-meta { margin-left: 0; }

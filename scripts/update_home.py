@@ -6,7 +6,7 @@ import re
 
 
 ROOT = Path(__file__).resolve().parent.parent
-RECENT = (("blogs", "posts/index.html", 8), ("creations", "creations/index.html", 4))
+RECENT = (("blogs", "posts/index.html", 3), ("creations", "creations/index.html", 3))
 
 
 def recent_entries(path, limit):
