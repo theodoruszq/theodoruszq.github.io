@@ -112,6 +112,11 @@ main { min-width: 0; }
 [data-visit-count] { font-variant-numeric: tabular-nums; }
 .site-footer a { color: inherit; }
 .site-footer a:hover { color: var(--link); }
+.visitor-map { margin-bottom: 5px; text-align: right; }
+.visitor-map svg { width: 260px; max-width: 100%; height: auto; display: inline-block; }
+.visitor-map svg circle { fill: #d6d6d6; }
+.visitor-map svg circle.visitor-marker { fill: var(--link); }
+.visitor-map-caption { margin: 2px 0 0; }
 .skip-link { position: fixed; top: -80px; left: 16px; background: #fff; padding: 10px 16px; z-index: 2; }
 .skip-link:focus { top: 12px; }
 .post { max-width: 720px; padding: 0 20px; }

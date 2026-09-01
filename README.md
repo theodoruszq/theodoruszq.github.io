@@ -175,7 +175,14 @@ The footer shows **cumulative site page views**, not unique people or button cli
 - Counting is restricted to the exact production origin `https://theodoruszq.github.io`. Each full page load makes at most one increment request; language switches do not count again. Local previews make no requests and show a dash with an explanation.
 - There is no local-storage visit counter or invented initial value. Unavailable/invalid responses show a dash, never a misleading zero. The endpoint is not retried automatically, avoiding accidental double increments.
 - Only the canonical site origin is supplied, not the current article path, query string, or fragment. Fetch uses `credentials: 'omit'` and `referrerPolicy: 'no-referrer'`; no visitor identifier or analytics cookie is stored by this integration. The external service still receives visitors' IP addresses and browser network information. The footer links to the service and describes this in its title.
-- Do Not Track and Global Privacy Control opt-outs are respected by skipping statistics requests.
-- This is a lightweight public counter, not audited analytics: reloads can count again, blockers/opt-outs can undercount, and bots can affect totals. The provider explicitly offers no availability or data-integrity guarantee. It cannot recover historical traffic from before integration. A change to the production domain requires updating the guard and counter origin in `js/site.js` and may start a separate total.
+- This is a lightweight public counter, not audited analytics: reloads can count again, blockers can undercount, and bots can affect totals. The provider explicitly offers no availability or data-integrity guarantee. It cannot recover historical traffic from before integration. A change to the production domain requires updating the guard and counter origin in `js/site.js` and may start a separate total.
 
-The endpoint's read-only GET response and production-origin CORS preflight were checked during development. Live increments are intentionally not exercised in local preview; verify the number after an authorized production deployment.
+## Visitor map
+
+The footer also shows a small dot-matrix world map with a marker for the current visitor's location. It is self-contained: the land outline is embedded in `js/site.js` as run-length-encoded data (no map tiles or third-party script), and the visitor's position comes from a single read-only lookup to [ipwho.is](https://ipwho.is/) (`lang=zh-CN` or `en`), which needs no account or API key.
+
+- The map itself renders locally without any network request; on the live origin a geolocation lookup is made to place the marker and a localized country/city caption (with flag emoji). Local previews show the map without a marker.
+- The lookup is a non-incrementing GET with `credentials: 'omit'` and `referrerPolicy: 'no-referrer'`; it does not write cookies or store anything client-side, but the service sees the visitor's IP to determine location, as with the counter service.
+- A change to the production domain requires updating the same origin guard in `js/site.js` for the map lookup.
+
+The endpoint's read-only GET response and production-origin CORS preflight were checked during development. Live increments and the geolocation marker are intentionally not exercised in local preview; verify after an authorized production deployment.

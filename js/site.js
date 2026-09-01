@@ -25,7 +25,7 @@
       inspired: '布局参考', notFound: '这个页面不在这里了。', home: '返回首页',
       counterLabel: '全站浏览', counterLoading: '',
       counterUnavailable: ' · 暂不可用',
-      counterPrivate: ' · 已尊重浏览器隐私偏好',
+      visitorMap: '访客分布地图',
       counterNotice: '由不蒜子提供累计浏览次数，并非独立访客数。正式站点会向统计服务发送站点域名；服务也会接收到访问者的 IP 和浏览器信息。',
     },
     en: {
@@ -46,7 +46,7 @@
       inspired: 'Layout inspired by', notFound: "This page isn't here anymore.", home: 'Back home',
       counterLabel: 'Site views', counterLoading: '',
       counterUnavailable: ' · Unavailable',
-      counterPrivate: ' · Browser privacy preference respected',
+      visitorMap: 'Visitor map',
       counterNotice: 'Cumulative page views provided by Busuanzi, not unique visitors. On the live site, the service receives the site domain, along with the visitor IP address and browser information.',
     },
   };
@@ -171,11 +171,6 @@
       renderCounter();
       return;
     }
-    if (navigator.doNotTrack === '1' || window.doNotTrack === '1' || navigator.globalPrivacyControl === true) {
-      counterState = 'counterPrivate';
-      renderCounter();
-      return;
-    }
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 6000);
     try {
@@ -201,7 +196,76 @@
     }
   }
 
+  // ---- Visitor world map ----
+  // A 90x45 dot grid (4° cells) run-length encoded per row as `<count><0|1>` tokens
+  // separated by commas; rows separated by semicolons. Data is local, no request.
+  const WORLD_MAP = '90x45:900;900;210,61,10,131,90,21,160,21,200;140,11,10,11,20,21,90,101,200,21,60,51,60,21,90;140,51,10,11,10,41,50,81,190,11,30,11,10,131,30,21,80;10,511,30,11,10,11,50,11,260;50,201,20,21,30,31,40,21,60,31,10,391;30,51,10,121,50,21,180,41,20,321,10,11,40;120,111,30,41,170,21,10,291,50,21,40;130,181,130,11,10,351,30,11,50;140,151,10,21,120,371,90;140,151,160,31,10,31,30,21,10,211,10,11,90;140,121,170,21,50,11,10,51,10,191,130;150,111,190,31,60,211,40,11,100;160,91,180,61,10,11,30,211,150;160,51,30,11,170,151,10,171,150;170,41,200,131,10,41,30,121,160;190,21,10,11,180,131,10,41,40,41,10,51,170;210,31,170,141,10,21,50,21,40,31,180;230,11,30,11,130,151,80,11,60,11,180;250,51,120,161,180,11,130;260,61,150,101,120,21,20,11,160;250,71,150,91,140,11,10,21,160;250,101,130,71,200,11,30,21,90;250,111,120,71,180,11,50,31,80;260,101,120,71,230,11,10,11,90;260,91,130,71,10,11,190,31,10,11,90;270,81,130,61,20,11,180,71,80;270,61,160,51,20,11,160,101,70;270,61,160,41,210,91,70;270,51,180,21,220,31,10,51,70;270,41,490,31,50,11,10;270,21,610;270,21,580,11,20;260,31,610;260,21,620;900;900;900;280,11,270,61,30,171,80;190,11,60,41,120,201,10,251,20;80,201,120,461,40;80,181,60,21,40,471,50;20,11,40,811,20;900';
+
+  function decodeWorldMap(data) {
+    const [dims, rows] = data.split(':');
+    const [w, h] = dims.split('x').map(Number);
+    const dots = [];
+    rows.split(';').forEach((row, y) => {
+      let x = 0;
+      for (const token of row.split(',')) {
+        const count = parseInt(token.slice(0, -1), 10);
+        const land = token.endsWith('1');
+        if (land) {
+          for (let i = 0; i < count; i++) dots.push([x + i, y]);
+        }
+        x += count;
+      }
+    });
+    return { w, h, dots };
+  }
+
   // Start once per page load, never on language switches or speculative prerenders.
-  if (document.prerendering) document.addEventListener('prerenderingchange', loadCounter, { once: true });
-  else loadCounter();
+  const start = () => { loadCounter(); loadVisitorMap(); };
+  if (document.prerendering) document.addEventListener('prerenderingchange', start, { once: true });
+  else start();
+
+  async function loadVisitorMap() {
+    const map = document.querySelector('[data-visitor-map]');
+    if (!map) return;
+    const svg = map.querySelector('svg');
+    if (!svg) return;
+    const ns = 'http://www.w3.org/2000/svg';
+    for (const [x, y] of decodeWorldMap(WORLD_MAP).dots) {
+      const dot = document.createElementNS(ns, 'circle');
+      dot.setAttribute('cx', x + 0.5);
+      dot.setAttribute('cy', y + 0.5);
+      dot.setAttribute('r', 0.32);
+      svg.appendChild(dot);
+    }
+    map.hidden = false;
+    if (location.origin !== 'https://theodoruszq.github.io') return;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 6000);
+    try {
+      const response = await fetch(`https://ipwho.is/?lang=${locale === 'zh' ? 'zh-CN' : 'en'}`, {
+        mode: 'cors',
+        credentials: 'omit',
+        referrerPolicy: 'no-referrer',
+        signal: controller.signal,
+      });
+      if (!response.ok) throw new Error('Geolocation unavailable');
+      const geo = await response.json();
+      if (geo.success !== true || !Number.isFinite(geo.latitude) || !Number.isFinite(geo.longitude)) throw new Error('Invalid geolocation');
+      const marker = document.createElementNS(ns, 'circle');
+      marker.setAttribute('class', 'visitor-marker');
+      marker.setAttribute('cx', (geo.longitude + 180) / 4);
+      marker.setAttribute('cy', (90 - geo.latitude) / 4);
+      marker.setAttribute('r', 0.85);
+      svg.appendChild(marker);
+      const caption = map.querySelector('[data-visitor-caption]');
+      if (caption) {
+        const flag = geo.flag && geo.flag.emoji ? `${geo.flag.emoji} ` : '';
+        caption.textContent = `${flag}${geo.country}${geo.city ? ' · ' + geo.city : ''}`;
+      }
+    } catch {
+      // The map stays visible without a marker if geolocation is unavailable.
+    } finally {
+      clearTimeout(timeout);
+    }
+  }
 })();
