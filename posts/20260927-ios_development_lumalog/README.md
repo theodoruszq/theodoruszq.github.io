@@ -2,6 +2,8 @@
 
 - `index.html`: development post placeholder at `/posts/20260927-ios_development_lumalog/`.
 - `privacy/index.html`: public bilingual privacy policy at `/posts/20260927-ios_development_lumalog/privacy/`.
+- `support/index.html`: bilingual support page and contact email for App Store Connect.
+- `about/index.html`: bilingual app introduction for the optional marketing URL.
 - `style.css`: styles shared by these pages.
 
 The privacy policy currently mirrors `Release/PrivacyPolicy.txt` in the PromptKeep app project. When changing the app's data handling or policy wording, update both copies before publishing.

@@ -22,4 +22,6 @@ p { line-height: 1.8; margin: 0 0 16px; }
 .policy { padding-top: 36px; border-top: 1px solid #dfe3df; scroll-margin-top: 20px; }
 .policy + .policy { margin-top: 52px; }
 .policy p { max-width: 72ch; }
+main > section:not(.policy) { margin-top: 36px; max-width: 72ch; }
+main > section:not(.policy) + section:not(.policy) { border-top: 1px solid #dfe3df; padding-top: 32px; }
 footer { padding: 22px 0 32px; border-top: 1px solid #e4e5e1; color: #6a7775; font-size: 13px; }
