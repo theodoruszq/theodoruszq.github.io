@@ -15,7 +15,7 @@ Anyway，最后还是成功了ship了一个版本，我非常开心，我自己�
 <figure><a href="/posts/20260927-ios_development_lumalog/assets/ios-detail.jpg"><img src="/posts/20260927-ios_development_lumalog/assets/ios-detail.jpg" alt="LumaLog iOS 详情页，图片与 Prompt、模型、评分一起保存" width="1320" height="2868" loading="lazy"></a><figcaption>把作品和创作记录放在一起。</figcaption></figure>
 </figure>
 
-然后就是Mac版本，这也并不容易，我好像是突然有了灵感，MCP这个和LumaLog在一起感觉是绝配。当然开发过程也很简单，Codex根本无法胜任，蹭了一下老婆的Curosr会员额度，很快就搞定了。我发现MCP可以让我更懒了，比如我有了一个多啦A梦的小朋友画画，我和Codex说『参考那个多啦A梦生成一个天使兽』，Codex自己去我的Prompt库找，然后去生成，效果真的很不错。
+然后就是Mac版本，这也并不容易，我好像是突然有了灵感，MCP这个和LumaLog在一起感觉是绝配。但是这没有我想的那么容易，Mac上的UI很容易出问题，Codex根本无法胜任，蹭了一下老婆的Curosr会员额度，很快就搞定了。我发现MCP可以让我更懒了，比如我有了一个多啦A梦的小朋友画画，我和Codex说『参考那个多啦A梦生成一个天使兽』，Codex自己去我的Prompt库找，然后去生成，效果真的很不错。
 
 <figure><a href="/posts/20260927-ios_development_lumalog/assets/04-reference-create.png"><img src="/posts/20260927-ios_development_lumalog/assets/04-reference-create.png" alt="Agent 读取 LumaLog 中的参考素材，继续创作" width="2880" height="1575" loading="lazy"></a><figcaption>从收藏的参考素材，延续新创作。</figcaption></figure>
 
