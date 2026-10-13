@@ -37,7 +37,7 @@ Anyway，最后还是成功了ship了一个版本，我非常开心，我自己�
 可能我开发这个App，目的还是留下美把，最近在读蒋勋的 『美学四讲』，好像有一些共鸣。
 
 - [了解 LumaLog：iOS、Mac 与 MCP](/posts/20260927-ios_development_lumalog/)
-- [在 App Store 查看 LumaLog](https://apps.apple.com/app/id6816669352)
+- [在 App Store 查看 LumaLog](https://apps.apple.com/cn/app/lumalog-prompt-library/id6816669352)
 - [使用问题或建议，联系我](/posts/20260927-ios_development_lumalog/support/)
 
 

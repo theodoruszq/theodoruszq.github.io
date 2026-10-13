@@ -32,5 +32,5 @@ I’ve also made a few other apps that I really enjoy using myself, and they sho
 Maybe what I really wanted from this app was to preserve beauty. I’ve been reading Chiang Hsun’s *Four Lectures on Aesthetics* lately, and something in it seems to resonate with me.
 
 - [Explore LumaLog: iOS, Mac, and MCP](/posts/20260927-ios_development_lumalog/)
-- [View LumaLog on the App Store](https://apps.apple.com/app/id6816669352)
+- [View LumaLog on the App Store](https://apps.apple.com/cn/app/lumalog-prompt-library/id6816669352)
 - [Get in touch with questions or suggestions](/posts/20260927-ios_development_lumalog/support/)
