@@ -9,7 +9,9 @@
 - `assets/`: original iOS and Mac screenshot assets and app icon used by the landing page.
 - `style.css`: existing styles used by the support and privacy pages.
 
-App Store: https://apps.apple.com/cn/app/lumalog-prompt-library/id6816669352
+App Store (Chinese): https://apps.apple.com/cn/app/lumalog-prompt-library/id6816669352
+App Store (English): https://apps.apple.com/us/app/lumalog-prompt-library/id6816669352
+Landing-page download links follow the selected page language.
 Author: https://theodoruszq.github.io/ and https://github.com/theodoruszq
 MCP and Agent tools are Mac-only; do not imply these are available in the iOS app.
 
