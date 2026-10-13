@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-13",
+  "draft": false,
+  "title": {
+    "zh": "LumaLog：我的第一次创作沉淀",
+    "en": "LumaLog: My First Creative Archive"
+  },
+  "summary": {
+    "zh": "做了一个自己的创作资料库：在 iOS 上记录作品与 Prompt，在 Mac 上通过 MCP 连接 Agent，让收藏的灵感成为下一次创作的起点。",
+    "en": "A personal creative library: save work and prompts on iOS, connect agents through MCP on Mac, and turn saved inspiration into a starting point for the next creation."
+  },
+  "image": "/images/20261013-building-lumalog/icon.png"
+}
