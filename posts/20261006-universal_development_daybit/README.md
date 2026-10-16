@@ -4,7 +4,7 @@
 - Support: https://theodoruszq.github.io/posts/20261006-universal_development_daybit/support/
 - Privacy: https://theodoruszq.github.io/posts/20261006-universal_development_daybit/privacy/
 
-Bilingual static pages following `20261001-mac_development_coolcaption`, focused on daily journaling. Publish the repository to make these URLs accessible. No external scripts, fonts, or analytics are included in these pages. Contact: theodoruszq@gmail.com.
+Bilingual static pages with a minimal promo home (Mac and iPhone App Store screenshots in `assets/`), focused on daily journaling. Publish the repository to make these URLs accessible. No external scripts, fonts, or analytics are included in these pages. Contact: theodoruszq@gmail.com.
 
 Privacy wording reflects the DayBit source checked on 2026-10-06: local journal storage, default iCloud Drive library when available, custom folders, photo import/compression and saving to Photos, local reminders, text history, backups, TXT and .daybit exports, and retained legacy location metadata. The current UI does not capture new locations. Update the policy when app behavior changes.
 
