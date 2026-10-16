@@ -1,0 +1,107 @@
+:root{--bg:#f7f7f4;--ink:#1a1a1a;--gray:#6f6f6a;--line:#dedfd9;--blue:#17a0f0;color-scheme:light;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Helvetica Neue",sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-size:17px;line-height:1.7}
+a{color:inherit;text-underline-offset:4px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+img{display:block;max-width:100%;height:auto}
+.wrap{width:min(100% - 48px,1160px);margin:0 auto}
+
+/* nav */
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;padding:20px 0;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;text-decoration:none}
+.brand img{width:40px;height:40px}
+.nav nav{display:flex;align-items:center;gap:22px;font-size:14px;flex-wrap:wrap}
+.nav nav a{text-decoration:none;color:var(--gray)}
+.nav nav a:hover{color:var(--ink)}
+.lang{display:flex;gap:2px;margin-left:8px;padding-left:18px;border-left:1px solid var(--line)}
+.lang button{border:0;background:none;font:inherit;font-size:13px;color:var(--gray);padding:3px 9px;border-radius:7px;cursor:pointer}
+.lang button[aria-pressed=true]{background:#e9e9e4;color:var(--ink)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;right:-8%;top:8%;width:70%;height:85%;border-radius:50%;background:radial-gradient(closest-side,rgba(23,160,240,.13),transparent);pointer-events:none}
+.hero-inner{position:relative;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:40px;align-items:center;padding:70px 0 80px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);margin:0 0 20px}
+.hero-icon{width:88px;height:88px;margin:0 0 22px 0}
+h1{font-size:clamp(54px,7vw,92px);line-height:1.02;letter-spacing:-.035em;font-weight:800;margin:0 0 20px}
+.tagline{font-size:clamp(24px,2.6vw,34px);line-height:1.3;margin:0 0 18px;font-weight:500}
+.tagline em{font-style:normal;color:var(--blue)}
+.intro{color:var(--gray);max-width:470px;margin:0 0 30px}
+.actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.download{display:inline-flex;align-items:center;gap:8px;background:#000;color:#fff;text-decoration:none;font-weight:600;padding:14px 28px;border-radius:12px}
+.download:hover{background:#222}
+.text-link{font-size:15px}
+.platforms{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 0;font-size:13px;color:var(--gray)}
+.platforms b{font-weight:600;color:var(--ink);border:1px solid #c9cac3;border-radius:20px;padding:2px 12px}
+
+.showcase{position:relative;padding:0 0 70px}
+.desktop{transform:rotate(-2deg);filter:drop-shadow(0 30px 50px rgba(0,0,0,.16))}
+.label{display:inline-block;font-size:12px;letter-spacing:.04em;color:var(--gray);margin:0 0 8px 6px}
+.label i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--blue);margin-right:7px}
+.phone{position:absolute;right:2%;bottom:0;width:27%;border-radius:13%/6%;overflow:hidden;background:#fff;
+  box-shadow:0 0 0 2px rgba(0,0,0,.08),0 40px 70px rgba(0,0,0,.22)}
+.phone-tag{position:absolute;right:2%;bottom:-30px;width:27%;text-align:center;font-size:12px;color:var(--gray)}
+
+/* sections */
+.section{padding:100px 0 0}
+.head{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
+.head h2{font-size:clamp(34px,4.6vw,58px);line-height:1.12;letter-spacing:-.03em;margin:0}
+.head p{color:var(--gray);margin:0}
+
+/* two devices */
+.devices{display:grid;grid-template-columns:1.5fr 1fr;gap:28px;align-items:stretch}
+.card{background:#fff;border:1px solid var(--line);border-radius:26px;padding:34px 34px 0;display:flex;flex-direction:column;overflow:hidden}
+.card h3{font-size:26px;margin:0 0 6px;letter-spacing:-.02em}
+.card p{color:var(--gray);margin:0 0 28px;max-width:46ch}
+.card .shot{margin-top:auto}
+.card.mac .shot img{border-radius:12px 12px 0 0;box-shadow:0 0 0 1px rgba(0,0,0,.06),0 20px 50px rgba(0,0,0,.12)}
+.card.ios{align-items:center;text-align:left}
+.card.ios .shot{width:66%;border-radius:11% 11% 0 0/5% 5% 0 0;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.08),0 20px 50px rgba(0,0,0,.14)}
+.card.ios h3,.card.ios p{align-self:flex-start}
+
+/* four points */
+.points{display:grid;grid-template-columns:repeat(4,1fr);gap:0 32px}
+.point{border-top:2px solid var(--ink);padding-top:20px}
+.point .n{font-size:12px;letter-spacing:.16em;color:var(--gray)}
+.point h3{font-size:22px;margin:12px 0 8px;letter-spacing:-.01em}
+.point p{margin:0;font-size:15px;color:var(--gray)}
+
+/* dark privacy */
+.dark{margin-top:110px;background:#111;color:#f1f1ee;padding:100px 0}
+.dark .eyebrow{color:#5fc0ff}
+.dark h2{font-size:clamp(34px,4.6vw,58px);line-height:1.12;letter-spacing:-.03em;margin:0 0 14px}
+.dark p{color:#9a9a96}
+.dark-grid{display:grid;grid-template-columns:.8fr 1.6fr;gap:60px;align-items:center}
+.dark-shots{position:relative;padding-bottom:60px}
+.dark-shots .mac img{filter:drop-shadow(0 30px 50px rgba(0,0,0,.6))}
+.dark-shots .phone{width:25%;right:0;background:#000;box-shadow:0 0 0 2px rgba(255,255,255,.12),0 40px 70px rgba(0,0,0,.7)}
+
+/* details */
+.details{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.details .card{padding-bottom:0}
+.list{list-style:none;margin:0 0 28px;padding:0;color:var(--gray);font-size:15px}
+.list li{border-top:1px solid var(--line);padding:9px 0}
+.list b{color:var(--ink);font-weight:600;margin-right:8px}
+
+.cta{text-align:center;padding:120px 0 40px}
+.cta h2{font-size:clamp(34px,5vw,64px);letter-spacing:-.03em;line-height:1.1;margin:0 0 26px}
+.cta .actions{justify-content:center}
+
+footer{margin-top:60px;border-top:1px solid var(--line);padding:24px 0 44px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--gray)}
+footer div{display:flex;gap:20px;flex-wrap:wrap}
+footer a{color:var(--gray)}
+
+@media(max-width:900px){
+  .hero-inner,.head,.devices,.details,.dark-grid{grid-template-columns:1fr}
+  .points{grid-template-columns:1fr 1fr;gap:34px 28px}
+  .hero-inner{padding:48px 0 70px}
+  .head{align-items:start}
+  .section{padding-top:70px}
+}
+@media(max-width:520px){
+  .points{grid-template-columns:1fr}
+  .card{padding:24px 22px 0}
+  .nav nav{gap:14px}
+  .lang{margin-left:0;padding-left:12px}
+}
