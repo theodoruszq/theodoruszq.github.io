@@ -1,16 +1,225 @@
 <!doctype html>
-<html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mac 上的双语字幕 / Bilingual Captions for Mac · CoolCaption</title><meta name="description" content="CoolCaption：本地识别、双语字幕、音频回放与词句收藏。On-device transcription, bilingual captions, audio replay, and saved words for Mac.">
-<link rel="canonical" href="https://theodoruszq.github.io/posts/20261001-mac_development_coolcaption/"><link rel="stylesheet" href="/posts/20261001-mac_development_coolcaption/style.css"></head>
-<body><header><div class="wrap"><a class="brand" href="/posts/20261001-mac_development_coolcaption/">CoolCaption</a><nav aria-label="Navigation"><a href="/posts/20261001-mac_development_coolcaption/" aria-current="page">About / 介绍</a><a href="/posts/20261001-mac_development_coolcaption/support/">Support / 支持</a><a href="/posts/20261001-mac_development_coolcaption/privacy/">Privacy / 隐私政策</a></nav></div></header>
-<main class="wrap">
-<p class="eyebrow">macOS App · 2026-10-01</p><h1>CoolCaption</h1><p class="lead">让 Mac 上的声音变成双语字幕。<br><span lang="en">Turn your Mac’s audio into bilingual captions.</span></p>
-<section lang="zh-Hans"><h2>边看、边听、边理解</h2><p>CoolCaption 捕获 Mac 的系统输出音频，使用 Apple 本地语音模型生成转写，并通过 Apple Translation 提供翻译。适合观看外语视频、听取音频和练习听力。</p>
-<h3>为你的观看方式选择布局</h3><p>标准、侧栏、底部与悬浮字幕四种视图，让你对照阅读双语文字、在视频旁跟读，或同时打开其他应用记笔记。字幕窗口支持拖动和缩放，界面支持浅色与深色模式。</p>
-<h3>回放与复习</h3><p>开启“保存音频”后，可以拖动进度条回放已保存的音频。高亮并收藏单词和句子，在收藏中回顾原句、翻译和来源记录。转写支持导出 TXT、SRT 和 JSONL。</p>
-<h3>在本机处理</h3><p>使用 macOS 26 或更新版本，并需要当前 Mac 支持 Apple SpeechTranscriber。首次使用需授予屏幕与系统音频录制、语音识别权限，并下载语言资源。所支持的识别语言与翻译语言对取决于系统可用资源；转写及翻译结果可能有误，请核对重要内容。</p></section>
-<section lang="en"><h2>Watch, listen, and understand</h2><p>CoolCaption captures your Mac’s system audio, transcribes it with Apple’s on-device speech models, and provides translations through Apple Translation. Follow foreign-language videos, listen to audio, and practice your listening skills.</p>
-<h3>A layout for the way you watch</h3><p>Choose Standard, Sidebar, Bottom, or floating Subtitle view. Read bilingual text, follow captions beside a video, or take notes in another app. Move and resize the caption window, and choose a light or dark appearance.</p>
-<h3>Replay and review</h3><p>Enable Save Audio to replay saved audio and drag the timeline to revisit a moment. Highlight and save words or sentences with their original context, translation, and source recording. Export transcripts as TXT, SRT, or JSONL.</p>
-<h3>Processed on your Mac</h3><p>Requires macOS 26 or later and a Mac that supports Apple SpeechTranscriber. First use requires screen and system audio recording permission, speech recognition permission, and language resource downloads. Available recognition languages and translation pairs depend on system resources. Transcription and translation may contain errors; verify important content.</p></section>
-<div class="links"><a href="support/">技术支持 / Support</a><a href="privacy/">隐私政策 / Privacy Policy</a><a href="/posts/">返回博客 / Back to Blog</a></div></main><footer><div class="wrap">CoolCaption · <a href="/">Theodorus</a> · <a href="mailto:theodoruszq@gmail.com">theodoruszq@gmail.com</a></div></footer></body></html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CoolCaption · Mac 上的双语字幕 / Bilingual Captions for Mac</title>
+<meta name="description" content="CoolCaption：捕获 Mac 系统音频，本地识别并翻译成双语字幕。On-device transcription and bilingual captions for every sound on your Mac.">
+<link rel="canonical" href="https://theodoruszq.github.io/posts/20261001-mac_development_coolcaption/">
+<link rel="icon" href="assets/icon.png">
+<style>
+/*
+  用法 / Usage
+  - 网站：直接打开，页面按宽度自适应缩放。
+  - App Store 截图：index.html?shot=1 … 6 （&lang=en 为英文），视口 1440×900，deviceScaleFactor=2 → 2880×1800。
+*/
+:root{--red:#ff3b30;--ink:#0a0a0a;--paper:#f3f1ec;--font:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Helvetica Neue",sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;background:#000;color:#fff;font-family:var(--font);-webkit-font-smoothing:antialiased}
+html[lang=en] .zh,html[lang=zh-Hans] .en{display:none}
+
+/* ---------- site chrome ---------- */
+.site-head{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.82);backdrop-filter:blur(18px);border-bottom:1px solid #222}
+.site-head .in{max-width:1200px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.site-head a{color:#fff;text-decoration:none}
+.site-brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:19px;letter-spacing:-.01em}
+.site-brand img{width:32px;height:32px;border-radius:8px}
+.site-nav{display:flex;gap:22px;font-size:14px;align-items:center}
+.site-nav a{color:#bbb}.site-nav a:hover,.site-nav a[aria-current]{color:#fff}
+.lang{border:1px solid #444;border-radius:99px;padding:4px 12px;font-size:12px;color:#ddd;background:none;cursor:pointer;font-family:inherit}
+.stack{max-width:1200px;margin:0 auto;padding:40px 24px 0;display:grid;gap:28px}
+.frame{position:relative;width:100%;border-radius:22px;overflow:hidden;box-shadow:0 0 0 1px #222}
+.info{max-width:1200px;margin:0 auto;padding:72px 24px 40px;display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.info h3{font-size:15px;color:var(--red);letter-spacing:.08em;text-transform:uppercase;margin:0 0 12px}
+.info p{margin:0;line-height:1.75;color:#bdbdbd;font-size:15px}
+.cta{max-width:1200px;margin:0 auto;padding:0 24px 56px;display:flex;flex-wrap:wrap;gap:12px}
+.cta a{padding:12px 22px;border-radius:99px;border:1px solid #444;color:#fff;text-decoration:none;font-size:14px}
+.cta a:hover{background:#fff;color:#000}
+.site-foot{border-top:1px solid #222;padding:24px;text-align:center;color:#777;font-size:13px}
+.site-foot a{color:#aaa}
+@media(max-width:800px){.info{grid-template-columns:1fr}.site-nav a:not([aria-current]){display:none}.site-nav a.keep{display:inline}}
+
+/* shot mode: only the bare slide */
+body.shot .site-head,body.shot .info,body.shot .cta,body.shot .site-foot{display:none}
+body.shot .stack{padding:0;max-width:none;display:block}
+body.shot .frame{border-radius:0;box-shadow:none;width:1440px;height:900px}
+body.shot .frame:not(.on){display:none}
+
+/* ---------- slides (fixed 1440×900 canvas) ---------- */
+.slide{position:absolute;left:0;top:0;width:1440px;height:900px;overflow:hidden;transform-origin:0 0;background:#000}
+.slide.paper{background:var(--paper);color:var(--ink)}
+.slide.red{background:var(--red)}
+.eyebrow{position:absolute;left:84px;top:76px;font-size:20px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:12px}
+.eyebrow i{width:14px;height:14px;border-radius:50%;background:var(--red);display:inline-block}
+.red .eyebrow i{background:#fff}
+h2.big{position:absolute;left:84px;margin:0;font-weight:800;letter-spacing:-.035em;line-height:1.04}
+.sub{position:absolute;left:84px;margin:0;font-size:27px;line-height:1.5;font-weight:500;opacity:.72}
+.win{position:absolute;border-radius:20px;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 50px 120px -20px rgba(0,0,0,.65);display:block}
+.paper .win{box-shadow:0 0 0 1px rgba(0,0,0,.1),0 50px 100px -30px rgba(0,0,0,.45)}
+.wave{position:absolute;pointer-events:none}
+.tag{display:inline-block;border-radius:99px;padding:8px 18px;font-size:19px;font-weight:600;background:rgba(255,255,255,.14);margin:0 10px 10px 0}
+.red .tag{background:rgba(0,0,0,.16);color:#fff}
+
+/* 1 hero */
+.s1 .logo{position:absolute;left:84px;top:84px;width:92px;height:92px;border-radius:22px;box-shadow:0 0 0 1px #333}
+.s1 .name{position:absolute;left:196px;top:104px;font-size:44px;font-weight:800;letter-spacing:-.02em}
+.s1 .name small{display:block;font-size:19px;font-weight:600;letter-spacing:.12em;color:#888;margin-top:2px;text-transform:uppercase}
+.s1 h2{top:290px;font-size:72px;width:640px}
+.s1 h2 em{font-style:normal;color:var(--red)}
+.s1 .sub{top:540px;width:560px}
+.s1 .win{left:760px;top:190px;width:1000px;border-radius:22px}
+.s1 .wave{left:-120px;top:690px;width:900px;opacity:.14}
+
+/* 2 floating */
+.s2 h2{top:105px;left:0;width:100%;text-align:center;font-size:80px}
+.s2 .sub{left:0;width:100%;text-align:center;top:205px;font-size:25px}
+.s2 .eyebrow{left:0;top:52px;width:100%;justify-content:center}
+.s2 .win{left:240px;top:272px;width:960px}
+.s2 .glow{position:absolute;left:0;right:0;bottom:-300px;height:560px;background:radial-gradient(closest-side,rgba(255,59,48,.25),transparent)}
+
+/* 3 layouts */
+.s3 h2{top:120px;font-size:68px;width:1000px}
+.s3 .grid{position:absolute;left:84px;right:84px;top:318px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{position:relative;height:262px;border-radius:20px;overflow:hidden;background-repeat:no-repeat;box-shadow:0 0 0 1px rgba(255,255,255,.14)}
+.card b{color:#fff;position:absolute;left:18px;top:16px;font-size:22px;font-weight:700;background:#000;border-radius:99px;padding:7px 18px;box-shadow:0 0 0 1px #333}
+.card b::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--red);margin-right:10px}
+.s3 .eyebrow{top:76px}
+
+/* 4 replay */
+.s4 h2{top:240px;font-size:88px;width:660px}
+.s4 .sub{top:560px;width:560px}
+.s4 .win{left:640px;top:0;height:900px;border-radius:0;box-shadow:none;filter:drop-shadow(0 40px 50px rgba(0,0,0,.25))}
+.s4 .bars{position:absolute;left:84px;top:740px;display:flex;gap:6px;align-items:flex-end;height:80px}
+.s4 .bars span{width:8px;border-radius:4px;background:#0a0a0a}
+.s4 .bars span.r{background:var(--red);width:4px;height:100px;margin:0 4px}
+
+/* 5 words */
+.s5 h2{top:170px;font-size:76px;width:460px}
+.s5 .sub{top:480px;width:420px}
+.s5 .win{left:570px;top:150px;width:1100px}
+.s5 .chips{position:absolute;left:84px;top:740px}
+.mark{background:var(--red);color:#fff;padding:0 .12em;border-radius:.12em}
+
+/* 6 privacy */
+.s6 h2{top:200px;font-size:128px;width:1200px;letter-spacing:-.045em}
+.s6 .sub{top:560px;width:900px;opacity:.92}
+.s6 .chips{position:absolute;left:84px;top:700px;width:1260px}
+.s6 .wave{right:-80px;top:-60px;width:700px;opacity:.22}
+</style>
+</head>
+<body>
+
+<header class="site-head"><div class="in">
+  <a class="site-brand" href="./"><img src="assets/icon.png" alt="">CoolCaption</a>
+  <nav class="site-nav" aria-label="Navigation">
+    <a href="./" aria-current="page" class="keep">About / 介绍</a>
+    <a href="support/">Support / 支持</a>
+    <a href="privacy/">Privacy / 隐私政策</a>
+    <button class="lang" id="langBtn" type="button">EN / 中</button>
+  </nav>
+</div></header>
+
+<main class="stack">
+
+<!-- ============ 1 · HERO ============ -->
+<div class="frame" data-n="1"><section class="slide s1">
+  <svg class="wave" viewBox="130 330 760 280" fill="none"><path d="M175 515C200 420 215 360 235 360 300 360 330 575 350 575 400 575 430 480 465 480 500 480 510 512 540 512H715" stroke="#fff" stroke-width="76" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <img class="logo" src="assets/icon.png" alt="">
+  <div class="name">CoolCaption<small>macOS 26</small></div>
+  <h2 class="big">
+    <span class="zh">Mac 里每一句声音，<br><em>都有双语字幕。</em></span>
+    <span class="en">Every sound on your Mac,<br><em>in bilingual captions.</em></span>
+  </h2>
+  <p class="sub">
+    <span class="zh">捕获系统音频，在本机识别并翻译。看视频、听播客、练听力，原文与译文同步滚动。</span>
+    <span class="en">Capture system audio, transcribe and translate on your Mac. Original and translation scroll in sync.</span>
+  </p>
+  <img class="win" src="assets/ui.png" alt="CoolCaption interface">
+</section></div>
+
+<!-- ============ 2 · FLOATING SUBTITLE ============ -->
+<div class="frame" data-n="2"><section class="slide s2">
+  <div class="glow"></div>
+  <div class="eyebrow"><i></i><span class="zh">悬浮字幕</span><span class="en">Floating subtitles</span></div>
+  <h2 class="big"><span class="zh">字幕，就浮在画面上。</span><span class="en">Captions that float on the picture.</span></h2>
+  <p class="sub"><span class="zh">透明字幕窗口置顶显示，可拖动、可缩放，不打断你正在看的内容。</span><span class="en">An always-on-top, movable, resizable caption window that stays out of the way.</span></p>
+  <img class="win" src="assets/subtitle.png" alt="Floating subtitle mode">
+</section></div>
+
+<!-- ============ 3 · LAYOUTS ============ -->
+<div class="frame" data-n="3"><section class="slide paper s3">
+  <div class="eyebrow"><i></i><span class="zh">四种视图</span><span class="en">Four views</span></div>
+  <h2 class="big"><span class="zh">按你看的方式，<br>选一种布局。</span><span class="en">Pick the layout<br>that fits how you watch.</span></h2>
+  <div class="grid">
+    <div class="card" style="background-image:url(assets/ui.png);background-size:190%;background-position:100% 0"><b><span class="zh">标准</span><span class="en">Standard</span></b></div>
+    <div class="card" style="background-image:url(assets/sidebar.png);background-size:190%;background-position:100% 0"><b><span class="zh">侧栏</span><span class="en">Sidebar</span></b></div>
+    <div class="card" style="background-image:url(assets/bottom.png);background-size:150%;background-position:50% 100%"><b><span class="zh">底部</span><span class="en">Bottom</span></b></div>
+    <div class="card" style="background-image:url(assets/subtitle.png);background-size:150%;background-position:50% 100%"><b><span class="zh">悬浮字幕</span><span class="en">Subtitle</span></b></div>
+  </div>
+</section></div>
+
+<!-- ============ 4 · REPLAY ============ -->
+<div class="frame" data-n="4"><section class="slide paper s4">
+  <div class="eyebrow"><i></i><span class="zh">音频回放</span><span class="en">Audio replay</span></div>
+  <h2 class="big"><span class="zh">错过的那句，<br>拖回去再听。</span><span class="en">Missed a line?<br>Drag back and listen.</span></h2>
+  <p class="sub"><span class="zh">开启“保存音频”，在波形时间轴上拖动，即可回到任意时刻，字幕同步定位。</span><span class="en">Turn on Save Audio, then drag the waveform timeline to any moment. Captions follow along.</span></p>
+  <div class="bars" aria-hidden="true"></div>
+  <img class="win" src="assets/replay.png" alt="Replay with timeline">
+</section></div>
+
+<!-- ============ 5 · WORDS ============ -->
+<div class="frame" data-n="5"><section class="slide s5">
+  <div class="eyebrow"><i></i><span class="zh">词句收藏</span><span class="en">Highlights</span></div>
+  <h2 class="big"><span class="zh">遇到生词，<br>当场<span class="mark">收藏</span>。</span><span class="en">Meet a new word?<br><span class="mark">Save</span> it on the spot.</span></h2>
+  <p class="sub"><span class="zh">高亮单词与句子，随时回看原句、译文与来源记录。</span><span class="en">Highlight words and sentences, then revisit the original line, translation and source.</span></p>
+  <div class="chips"><span class="tag"><span class="zh">单词</span><span class="en">Words</span></span><span class="tag"><span class="zh">句子</span><span class="en">Sentences</span></span><span class="tag">JSONL</span></div>
+  <img class="win" src="assets/words.png" alt="Saved words">
+</section></div>
+
+<!-- ============ 6 · PRIVACY ============ -->
+<div class="frame" data-n="6"><section class="slide red s6">
+  <svg class="wave" viewBox="130 330 760 280" fill="none"><path d="M175 515C200 420 215 360 235 360 300 360 330 575 350 575 400 575 430 480 465 480 500 480 510 512 540 512H715" stroke="#fff" stroke-width="76" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div class="eyebrow"><i></i><span class="zh">本地处理</span><span class="en">On-device</span></div>
+  <h2 class="big"><span class="zh">声音留在<br>你的 Mac 上。</span><span class="en">Your audio<br>stays on your Mac.</span></h2>
+  <p class="sub"><span class="zh">使用 Apple SpeechAnalyzer 与 Apple Translation 在设备上识别、翻译。没有账号，没有广告，不上传到开发者服务器。</span><span class="en">Powered by Apple SpeechAnalyzer and Apple Translation, on device. No account, no ads, nothing uploaded to developer servers.</span></p>
+  <div class="chips">
+    <span class="tag">SpeechAnalyzer</span><span class="tag">Apple Translation</span><span class="tag">ScreenCaptureKit</span>
+    <span class="tag"><span class="zh">导出</span><span class="en">Export</span> TXT · SRT · JSONL</span>
+  </div>
+</section></div>
+
+</main>
+
+<section class="info">
+  <div><h3><span class="zh">它做什么</span><span class="en">What it does</span></h3>
+    <p><span class="zh">CoolCaption 捕获 Mac 的系统输出音频，使用 Apple 本地语音模型转写，并通过 Apple Translation 翻译。适合观看外语视频、收听音频和练习听力。</span><span class="en">CoolCaption captures your Mac’s system audio, transcribes it with Apple’s on-device speech models and translates through Apple Translation. Great for foreign-language video, audio and listening practice.</span></p></div>
+  <div><h3><span class="zh">系统要求</span><span class="en">Requirements</span></h3>
+    <p><span class="zh">macOS 26 或更高版本，且当前 Mac 支持 Apple SpeechTranscriber。首次使用需授予“屏幕与系统音频录制”和“语音识别”权限，并下载语言资源。</span><span class="en">macOS 26 or later and a Mac that supports Apple SpeechTranscriber. First use requires Screen &amp; System Audio Recording and Speech Recognition permissions plus language downloads.</span></p></div>
+  <div><h3><span class="zh">请注意</span><span class="en">Good to know</span></h3>
+    <p><span class="zh">可用的识别与翻译语言取决于系统资源；英语识别通常最稳定。转写及翻译结果可能有误，请核对重要内容。</span><span class="en">Available recognition and translation languages depend on system resources; English is usually the most reliable. Transcription and translation may contain errors—verify what matters.</span></p></div>
+</section>
+<div class="cta">
+  <a href="support/">技术支持 / Support</a><a href="privacy/">隐私政策 / Privacy Policy</a><a href="/posts/">返回博客 / Back to Blog</a>
+</div>
+<footer class="site-foot">CoolCaption · <a href="/">Theodorus</a> · <a href="mailto:theodoruszq@gmail.com">theodoruszq@gmail.com</a></footer>
+
+<script>
+(function(){
+  var q=new URLSearchParams(location.search), shot=q.get('shot'), lang=q.get('lang');
+  var L=lang||localStorage.getItem('cc-lang')||((navigator.language||'').toLowerCase().indexOf('zh')===0?'zh':'en');
+  function setLang(l){document.documentElement.lang=l==='en'?'en':'zh-Hans';try{localStorage.setItem('cc-lang',l)}catch(e){}}
+  setLang(L);
+  // waveform bars for slide 4
+  var bars=document.querySelector('.s4 .bars'),h=[22,38,28,54,70,46,30,62,40,26,50,34,20,44,58,32,24,40];
+  h.forEach(function(v,i){var s=document.createElement('span');s.style.height=v+'px';bars.appendChild(s);if(i===11){var r=document.createElement('span');r.className='r';bars.appendChild(r)}});
+  var frames=[].slice.call(document.querySelectorAll('.frame'));
+  function fit(){frames.forEach(function(f){
+    var s=document.body.classList.contains('shot')?1:f.clientWidth/1440;
+    f.style.height=900*s+'px';f.firstElementChild.style.transform='scale('+s+')'})}
+  if(shot){document.body.classList.add('shot');frames.forEach(function(f){if(f.dataset.n===shot)f.classList.add('on')})}
+  fit();addEventListener('resize',fit);
+  document.getElementById('langBtn').onclick=function(){setLang(document.documentElement.lang==='en'?'zh':'en')};
+})();
+</script>
+</body>
+</html>
